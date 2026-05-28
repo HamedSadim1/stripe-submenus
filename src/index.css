@@ -381,14 +381,16 @@ Stripe Styles
   place-items: center;
   visibility: hidden;
   z-index: -1;
-  transition: var(--transition);
-  transform: scale(0);
+  opacity: 0;
   background: rgba(0, 0, 0, 0.5);
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
 }
 .sidebar-wrapper.show {
   visibility: visible;
   z-index: 2;
-  transform: scale(1);
+  opacity: 1;
 }
 .sidebar {
   width: 90vw;
@@ -399,6 +401,11 @@ Stripe Styles
   box-shadow: var(--dark-shadow);
   position: relative;
   padding: 4rem 2rem;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar-wrapper.show .sidebar {
+  transform: translateX(0);
 }
 .close-btn {
   font-size: 2rem;
