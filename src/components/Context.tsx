@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { useState, useContext } from "react";
 import { sublinks, SUBLINKS } from "../data";
 
@@ -23,7 +24,7 @@ const AppContext = React.createContext<AppContextProps>({
   openSidebar: () => {},
   closeSidebar: () => {},
   closeSubmenu: () => {},
-  openSubmenu: (_text: string, _coordinates: COORDINATES) => {},
+  openSubmenu: () => {},
   coordinates: { center: 0, bottom: 0 },
   page: sublinks[0],
 });

@@ -1,27 +1,25 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useGlobalContext } from "./Context";
 import LinkItem from "./LinkItem";
 
 const Submenu = () => {
   const { isSubmenuOpen, coordinates, page } = useGlobalContext();
-  const [column, setColumn] = useState<string>("col-2");
-
   const container = useRef<HTMLDivElement>(null);
 
+  const column =
+    page.links.length === 3
+      ? "col-3"
+      : page.links.length > 3
+        ? "col-4"
+        : "col-2";
+
   useEffect(() => {
-    setColumn("col-2");
     const submenu = container.current as HTMLDivElement;
     const { center, bottom } = coordinates;
 
     submenu.style.left = `${center}px`;
     submenu.style.top = `${bottom}px`;
-    if (page.links.length === 3) {
-      setColumn("col-3");
-    }
-    if (page.links.length > 3) {
-      setColumn("col-4");
-    }
-  }, [coordinates, page.links]);
+  }, [coordinates]);
 
   return (
     <aside
